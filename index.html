@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-white">
+    <nav class="bg-black text-white px-4 py-2 border-b border-gray-600">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4 lg:hidden">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2 2 19.8 19.8 0 0 1-8.58-3.34A19.8 19.8 0 0 1 3.34 12 19.8 19.8 0 0 1 0 3.34 2 2 0 0 1 2 1h3a2 2 0 0 1 2 1.72 12.33 12.33 0 0 0 .7 2.94 2 2 0 0 1-.45 2.12L5 9a16 16 0 0 0 6 6l1.21-1.21a2 2 0 0 1 2.12-.45 12.33 12.33 0 0 0 2.94.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </span>
+            </div>
+                        <div class="flex-1 flex justify-center lg:justify-start">
+                <img src="./images/Group.png" alt="Logo" class="h-10">
+            </div>
+                        <div class="flex items-center space-x-4">
+                <span class="hidden lg:inline cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="12" rx="2"/>
+                        <line x1="2" y1="20" x2="22" y2="20"/>
+                        <line x1="9" y1="16" x2="15" y2="16"/>
+                    </svg>
+                </span>
+                <span class="hidden lg:inline cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-1.38 4.55 8.5 8.5 0 0 1-7.62 4.45 8.38 8.38 0 0 1-4.55-1.38L3 21l1.88-3.45A8.38 8.38 0 0 1 3 11.5a8.5 8.5 0 0 1 8.5-8.5A8.5 8.5 0 0 1 21 11.5z"/>
+                    </svg>
+                </span>
+                <button class="flex items-center space-x-1 border px-2 py-1 rounded-full">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/>
+                        </svg>
+                    </span>
+                    <span>EN</span>
+                </button>
+                <div class="lg:block lg:flex items-center space-x-2">
+                    <span class=" lg:block hidden text-sm">0%</span>
+                    <span class="w-6 h-6 bg-gray-200 rounded-full"></span>
+                    <span>Test User ▼</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-2xl font-bold text-center mb-4">Mortgage Calculator: Debt Free Date</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h2 class="text-lg font-bold mb-2">Basic Details</h2>
+                
+                <label class="block">Original Mortgage Amount</label>
+                <input type="range" id="amount" min="10000" max="2500000" value="100000" class="w-full">
+                <span id="amountValue" class="font-bold">$100,000</span>
+
+                <label class="block mt-3">Interest Rate (%)</label>
+                <input type="range" id="rate" min="1" max="20" value="5.5" class="w-full">
+                <span id="rateValue" class="font-bold">5.5%</span>
+
+                <label class="block mt-3">Original Amortization (Years)</label>
+                <input type="range" id="years" min="1" max="30" value="25" class="w-full">
+                <span id="yearsValue" class="font-bold">25 Y</span>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-lg font-bold">Total Payments Over Term</h2>
+                    <button onclick="downloadPDF()" class="bg-green-500 text-white px-4 py-2 rounded-md">Download Report</button>
+                </div>
+                
+                <p class="text-xl font-bold text-green-600" id="totalPayments">$182,805</p>
+                <p>Principal: <span id="principalValue">$100,000</span></p>
+                <p>Interest: <span id="interestValue">$82,805</span></p>
+                
+                <h3 class="mt-4 font-bold">Payoff Date</h3>
+                <p class="text-xl font-bold text-green-600" id="payoffDate">Jan, 2045</p>
+
+                <h3 class="mt-4 font-bold">Monthly Payment</h3>
+                <p class="text-xl font-bold text-green-600" id="monthlyPayment">$609.35</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateMortgage() {
+            let amount = parseFloat(document.getElementById('amount').value);
+            let rate = parseFloat(document.getElementById('rate').value) / 100 / 12;
+            let years = parseFloat(document.getElementById('years').value) * 12;
+            
+            let monthlyPayment = (amount * rate) / (1 - Math.pow(1 + rate, -years));
+            let totalPayments = monthlyPayment * years;
+            let interestPaid = totalPayments - amount;
+            
+            document.getElementById('amountValue').innerText = `$${amount.toLocaleString()}`;
+            document.getElementById('rateValue').innerText = `${(rate * 12 * 100).toFixed(1)}%`;
+            document.getElementById('yearsValue').innerText = `${years / 12} Y`;
+            document.getElementById('monthlyPayment').innerText = `$${monthlyPayment.toFixed(2)}`;
+            document.getElementById('totalPayments').innerText = `$${totalPayments.toFixed(2)}`;
+            document.getElementById('interestValue').innerText = `$${interestPaid.toFixed(2)}`;
+            
+            let startDate = new Date();
+            startDate.setFullYear(startDate.getFullYear() + (years / 12));
+            document.getElementById('payoffDate').innerText = startDate.toLocaleString('default', { month: 'short', year: 'numeric' });
+        }
+        
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(18);
+            doc.text("Mortgage Report", 15, 15);
+
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "normal");
+
+            doc.text(`Total Payments Over Term: ${document.getElementById('totalPayments').innerText}`, 15, 30);
+            doc.text(`Principal: ${document.getElementById('principalValue').innerText}`, 15, 40);
+            doc.text(`Interest: ${document.getElementById('interestValue').innerText}`, 15, 50);
+            doc.text(`Payoff Date: ${document.getElementById('payoffDate').innerText}`, 15, 60);
+            doc.text(`Monthly Payment: ${document.getElementById('monthlyPayment').innerText}`, 15, 70);
+
+            doc.save("mortgage_report.pdf");
+        }
+
+        document.querySelectorAll('input[type=range]').forEach(input => {
+            input.addEventListener('input', calculateMortgage);
+        });
+        calculateMortgage();
+    </script>
+</body>
+</html>
