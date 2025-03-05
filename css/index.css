@@ -1,0 +1,146 @@
+.payoffdate{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.payofftitle{
+    font-size: 20px;
+}
+
+.footer {
+    background-color: #0a0a0a;
+    color: #888888;
+    padding: 15px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-left a, 
+.footer-right span {
+    color: #888888;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.footer-left a:hover {
+    text-decoration: underline;
+}
+
+.footer-center {
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.footer-right img {
+    margin-left: 10px;
+    border-radius: 20%;
+    background-color: #ccc; /* Placeholder for icons */
+    padding: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        margin-bottom: 10px;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+}
+
+.toggle-section {
+    display: flex;
+    max-width: 550px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin: 0 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #a3c539; 
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+.compare-loan {
+    font-weight: bold;
+}
+@media (max-width: 500px) {
+    .toggle-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .compare-loan {
+        margin-top: 10px;
+    }
+}

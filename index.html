@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Navbar</title>
+    <title>MortGage-Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body class="bg-white">
-    <nav class="bg-black text-white px-4 py-2 border-b border-gray-600">
+     <nav class="bg-black text-white px-4 py-2 border-b border-gray-600">
         <div class="container mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-4 lg:hidden">
                 <span>
@@ -57,12 +59,23 @@
         </div>
     </nav>
 
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-5xl mx-auto mt-6 pb-[10px]">
+        
         <h1 class="text-2xl font-bold text-center mb-4">Mortgage Calculator: Debt Free Date</h1>
+        <div class="toggle-section shadow-lg">
+            <span class="bold-text">Debt Free Date</span>
+            <label class="switch">
+                <input type="checkbox" id="toggleSwitch">
+                <span class="slider round"></span>
+            </label>
+            <span class="bold-text">Home Affordability</span>
+        
+            <span class="compare-loan">Compare Loan</span>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg shadow-md">
                 <h2 class="text-lg font-bold mb-2">Basic Details</h2>
-                
+
                 <label class="block">Original Mortgage Amount</label>
                 <input type="range" id="amount" min="10000" max="2500000" value="100000" class="w-full">
                 <span id="amountValue" class="font-bold">$100,000</span>
@@ -74,25 +87,106 @@
                 <label class="block mt-3">Original Amortization (Years)</label>
                 <input type="range" id="years" min="1" max="30" value="25" class="w-full">
                 <span id="yearsValue" class="font-bold">25 Y</span>
+                <label class="block mt-3">Mortgage Start Date</label>
+                <input type="date" id="startDate" class="w-full border p-2 rounded-md">
+                <label class="block mt-3">Province</label>
+                <select id="province" class="w-full border p-2 rounded-md">
+                    <option value="Ontario">Ontario</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="British Columbia">British Columbia</option>
+                    <option value="Alberta">Alberta</option>
+                    <option value="Manitoba">Manitoba</option>
+                </select>
+                <label class="block mt-3">Payment Frequency</label>
+                <div class="flex space-x-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="frequency" value="monthly" checked class="mr-2"> Monthly
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="frequency" value="biweekly" class="mr-2"> Bi-Weekly
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="frequency" value="weekly" class="mr-2"> Weekly
+                    </label>
+                </div>
             </div>
-            <div class="bg-white p-4 rounded-lg shadow-md">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-bold">Total Payments Over Term</h2>
+            
+            <div class="space-y-4">
+                <div class="flex justify-center lg:justify-end items-center">
                     <button onclick="downloadPDF()" class="bg-green-500 text-white px-4 py-2 rounded-md">Download Report</button>
                 </div>
-                
-                <p class="text-xl font-bold text-green-600" id="totalPayments">$182,805</p>
-                <p>Principal: <span id="principalValue">$100,000</span></p>
-                <p>Interest: <span id="interestValue">$82,805</span></p>
-                
-                <h3 class="mt-4 font-bold">Payoff Date</h3>
-                <p class="text-xl font-bold text-green-600" id="payoffDate">Jan, 2045</p>
+                <div class="bg-white p-6 rounded-lg shadow-md ">
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div>
+                            <h2 class="font-bold text-[#646464]">Total Payments Over Term</h2>
+                            <p class="lg:text-[46px] md:text-[36px] sm:text-[30px] font-bold text-[#9FBA3A] border-b border-[#CDCDCD]" id="totalPayments">$182,805</p>
+                            <div>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <img src="./images/Rectangle 84.png" alt="recy2">
+                                    <p>Principal: <span id="principalValue" class="font-bold " id="principalValue">$100,000</span></p>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                   
+                                    <img src="./images/Rectangle 204.png" alt="rect">
+                                    <p>
+                                        Interest: <span id="interestValue" class="font-bold">$82,805</span>
+                                    </p>
+                                </div>
+                               
+                           
+                            </div>        
+                            
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <div class="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center">
+                                <img src="./images/Group (1).png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="payoffdate pb-5 border-b border-[#CDCDCD]"> 
+                        <h3 class="text-[#666666] text-[24px] mt-3">Payoff Date</h3>
+                        <p class="lg:text-[46px] md:text-[36px] sm:text-[30px] font-bold text-[#9FBA3A]" id="payoffDate">Jan, 2045</p>
+                    </div>
+                    <div class="payoffdate pb-5 border-b border-[#CDCDCD]">
+                        <h3 class="text-[#666666] text-[24px] mt-3">Monthly Payment</h3>
+                    <p class="lg:text-[46px] md:text-[36px] sm:text-[30px] font-bold text-[#9FBA3A]" id="monthlyPayment">$609.35</p>
+                    </div>
+                    <div class="payoffdate pb-5 border-b border-[#CDCDCD]">
+                        <h3 class="text-[#666666] text-[24px] mt-3">Interest Rate</h3>
+                        <p class="lg:text-[46px] md:text-[36px] sm:text-[30px] font-bold " id="interestRate">5.5%</p>
+                    </div>
+                    
+                    <div class="payoffdate pb-5 border-b border-[#CDCDCD]">
+                        <h3 class="text-[#666666] text-[24px] mt-3">Amortization Period</h3>
+                        <p class="lg:text-[46px] md:text-[36px] sm:text-[30px] font-bold " id="amortizationPeriod">25 Y</p>
+                    </div>
+                </div>
 
-                <h3 class="mt-4 font-bold">Monthly Payment</h3>
-                <p class="text-xl font-bold text-green-600" id="monthlyPayment">$609.35</p>
             </div>
+
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Legal (Terms of Use)</a>
+                <a href="#">Money Back Guarantee</a>
+            </div>
+            <div class="footer-center">
+                <p>410-2059 Chesterfield Ave.<br>North Vancouver, BC V7M2P4</p>
+            </div>
+            <div class="footer-right">
+                <span>@Follow Us</span>
+                <a href="#"><img src="./images/fb.png" alt="Facebook"></a>
+                <a href="#"><img src="./images/link.png" alt="Twitter"></a>
+                <a href="#"><img src="./images/twit.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
+    
 
     <script>
         function calculateMortgage() {
@@ -132,7 +226,8 @@
             doc.text(`Interest: ${document.getElementById('interestValue').innerText}`, 15, 50);
             doc.text(`Payoff Date: ${document.getElementById('payoffDate').innerText}`, 15, 60);
             doc.text(`Monthly Payment: ${document.getElementById('monthlyPayment').innerText}`, 15, 70);
-
+            doc.text(`Interest Rate: ${document.getElementById('interestRate').innerText}`, 15, 80);
+            doc.text(`Amortization Period: ${document.getElementById('amortizationPeriod').innerText}`, 15, 90);
             doc.save("mortgage_report.pdf");
         }
 
